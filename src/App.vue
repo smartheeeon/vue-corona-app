@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <BasicLayout
+    @menuSelect="
+      (item) => {
+        content = item;
+      }
+    "
+  >
+    <MainContent :content="content" />
+  </BasicLayout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import BasicLayout from "./components/layout/BasicLayout.vue";
+import MainContent from "./components/layout/MainContent.vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { BasicLayout, MainContent },
+  data() {
+    return {
+      content: {
+        label: "대시보드",
+        index: "Dashboard",
+        path: "main",
+      },
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
